@@ -1,4 +1,6 @@
-import org.junit.jupiter.api.Test;
+package com.mindex.challenge.service.impl;
+
+//import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -15,11 +17,19 @@ import com.mindex.challenge.data.Employee;
 import com.mindex.challenge.data.Compensation;
 import com.mindex.challenge.service.EmployeeService;
 import com.mindex.challenge.service.CompensationService;
+import com.mindex.challenge.service.impl.CompensationServiceImpl;
 import com.mindex.challenge.data.ReportingStructure;
 import com.mindex.challenge.service.ReportingStructureService;
 import com.mindex.challenge.dao.EmployeeRepository;
 import com.mindex.challenge.dao.CompensationRepository;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
+//@SpringBootTest
+@RunWith(SpringRunner.class)
+//@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class CompensationServiceImplTest {
 
     @Mock
@@ -29,14 +39,13 @@ public class CompensationServiceImplTest {
     private EmployeeRepository employeeRepository;
 
     @InjectMocks
-    private CompensationService compensationService;
+    private CompensationServiceImpl compensationService;
 
     public CompensationServiceImplTest() {
     }
 
     @Test
     public void testCreateCompensation() {
-        // Given
         try {
             String dateString = "2024-01-01"; // Example date string
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -67,13 +76,11 @@ public class CompensationServiceImplTest {
 
     @Test
     public void testGetCompensationByEmployeeId() {
-        // Given
         try {
             String dateString = "2024-01-01"; // Example date string
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             Date testDate;
             testDate = formatter.parse(dateString);
-            //Employee employee = new Employee("1", "John", "Lennon", "Manager", "HR", null);
             Employee testEmployee = new Employee();
             testEmployee.setFirstName("John");
             testEmployee.setLastName("Doe");
@@ -95,13 +102,4 @@ public class CompensationServiceImplTest {
             e.printStackTrace();
         }
     }
-
-   /* @Test
-    public void testGetCompensationByEmployeeId_NotFound() {
-        // Given
-        when(compensationRepository.findByEmployee_EmployeeId("1")).thenReturn(Optional.empty());
-
-        // Execute and Verify
-        assertThrows(RuntimeException.class, () -> compensationService.getCompensationByEmployeeId("1"));
-    } */
 }
