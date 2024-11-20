@@ -6,5 +6,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 @Repository
 public interface CompensationRepository extends MongoRepository<Compensation, String> {
+   // Use derived query method to generate query on employee property, employeeID
     Compensation findByEmployee_EmployeeId(String employeeId);
 }

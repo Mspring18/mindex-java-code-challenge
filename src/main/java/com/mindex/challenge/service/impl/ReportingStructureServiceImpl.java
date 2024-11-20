@@ -16,10 +16,6 @@ public class ReportingStructureServiceImpl implements ReportingStructureService 
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    /*public String read(Employee) {
-
-    } */
-
     public int calculateNumberOfReports(Employee employee) {
         if (employee == null || employee.getDirectReports() == null || employee.getDirectReports().isEmpty()) {
             return 0;
