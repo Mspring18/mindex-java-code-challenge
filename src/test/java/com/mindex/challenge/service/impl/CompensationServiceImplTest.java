@@ -1,6 +1,5 @@
 package com.mindex.challenge.service.impl;
 
-//import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -27,9 +26,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-//@SpringBootTest
 @RunWith(SpringRunner.class)
-//@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class CompensationServiceImplTest {
 
     @Mock
@@ -53,12 +50,14 @@ public class CompensationServiceImplTest {
             testDate = formatter.parse(dateString);
 
             Employee testEmployee = new Employee();
+            testEmployee.setEmployeeId("1");
             testEmployee.setFirstName("John");
             testEmployee.setLastName("Doe");
             testEmployee.setDepartment("Engineering");
             testEmployee.setPosition("Developer");
             Compensation compensation = new Compensation(testEmployee, 100000, testDate);
 
+            // Defines what to return on this function call - mock db call
             when(compensationRepository.save(compensation)).thenReturn(compensation);
 
             // Execute
@@ -82,12 +81,14 @@ public class CompensationServiceImplTest {
             Date testDate;
             testDate = formatter.parse(dateString);
             Employee testEmployee = new Employee();
+            testEmployee.setEmployeeId("1");
             testEmployee.setFirstName("John");
             testEmployee.setLastName("Doe");
             testEmployee.setDepartment("Engineering");
             testEmployee.setPosition("Developer");
             Compensation compensation = new Compensation(testEmployee, 100000, testDate);
 
+            // Defines what to return on this function call - mock db call
             when(compensationRepository.findByEmployee_EmployeeId("1")).thenReturn(compensation);
 
             // Execute
